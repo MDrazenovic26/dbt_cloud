@@ -1,10 +1,10 @@
 version: 2
 
 sources:
-  - name: snf_staging
+  - name: snf_integration
     database: SNEAKER_FAQTORY_DB_2  
-    description: This is a source for staging shcema, untransformed data
-    schema: STAGING  
+    description: This is a source for bronze shcema, untransformed data
+    schema: INTEGRATION  
     tables:
       - name: MAKT
       - name: VCUR
