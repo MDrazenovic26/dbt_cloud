@@ -19,13 +19,15 @@ with product_rn as (
 product_final as(
     select
         SHA2 (INDEX || MATNR, 256) as ID,
+        MATNR AS PRODUCT_ID,
         MAKTX as PRODUCT_NAME,
         BEZE1 AS PRODUCT_CATEGORY,
         BEZE2 AS PRODUCT_SUBCATEGORY,
         PRDFB AS PRODUCT_COLOR,
         STKPR AS UNIT_PRICE,
         DATEF AS DATE_INTORDUCED,
-        PRDGR AS PRODUCT_SIZE
+        PRDGR AS PRODUCT_SIZE,
+        CURRENT_DATE() AS LAST_MODIFIED
     from product_rn
     where rn=1
 )
