@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: snf_integration
+    database: SNEAKER_FAQTORY_DB_2  
+    description: This is a source for bronze shcema, untransformed data
+    schema: INTEGRATION  
+    tables:
+      - name: MAKT
+      - name: VCUR
+      - name: TCURC
+      - name: KONP
+      - name: TVKOT
+      - name: VBAK
