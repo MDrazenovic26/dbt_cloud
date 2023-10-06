@@ -6,9 +6,4 @@ sources:
     description: This is a source for bronze shcema, untransformed data
     schema: INTEGRATION  
     tables:
-      - name: MAKT
-      - name: VCUR
-      - name: TCURC
-      - name: KONP
-      - name: TVKOT
-      - name: VBAK
+      - name: PRODUCT
