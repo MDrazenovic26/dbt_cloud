@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: snf_staging
     database: SNEAKER_FAQTORY_DB_2  
-    description: This is a source for bronze shcema, untransformed data
+    description: This is a source for staging shcema, untransformed data
     schema: STAGING  
     tables:
       - name: MAKT
