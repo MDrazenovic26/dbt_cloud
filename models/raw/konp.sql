@@ -18,6 +18,6 @@ with konp as (
         CASE WHEN VAFR IS NULL THEN '1900-01-01' ELSE VAFR END AS VAFR,
         CASE WHEN VATO IS NULL THEN '1900-01-01' ELSE VATO END AS VATO,
         CURRENT_DATE() AS LAST_MODIFIED
-    from {{ sources('snf_staging','KONP') }}
+    from {{ source('snf_staging','KONP') }}
 )
 SELECT * FROM konp
