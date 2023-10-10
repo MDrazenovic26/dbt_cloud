@@ -7,3 +7,7 @@ sources:
     schema: INTEGRATION  
     tables:
       - name: PRODUCT
+      - name: DISCOUNT
+      - name: CURRENCY_RATES
+      - name: ORDERLINE
+      - name: PAYMENT
