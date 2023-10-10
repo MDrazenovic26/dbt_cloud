@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized= 'table'
+    )
+}}
+
 with vbrp as (
     select *
     from {{ source('snf_raw', 'VBRP') }}
