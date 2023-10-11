@@ -11,3 +11,19 @@ sources:
       - name: CURRENCY_RATES
       - name: ORDERLINE
       - name: PAYMENT
+
+models:
+  - name: dim_payment
+    columns:
+      - name: ID
+        tests:
+          - unique
+          - not_null
+  
+  - name: dim_product
+    columns:
+      - name: ID
+        tests:
+          - unique
+          - not_null
+              

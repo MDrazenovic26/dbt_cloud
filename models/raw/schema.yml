@@ -13,3 +13,53 @@ sources:
       - name: TVKOT
       - name: VBAK
       - name: VBRP
+
+models:
+  - name: konp
+    columns:
+      - name: index
+        tests:
+          - unique
+          - not_null
+
+  - name: makt 
+    columns:
+      - name: index
+        tests:
+          - unique
+          - not_null
+
+  - name: tcurc
+    columns:
+      - name: index
+        tests:
+          - unique
+          - not_null
+
+  - name: tvkot
+    columns:
+      - name: index
+        tests:
+          - unique
+          - not_null
+
+  - name: vbrp
+    columns:
+      - name: index
+        tests:
+          - unique
+          - not_null
+
+  - name: vbak
+    columns:
+      - name: index
+        tests:
+          - unique
+          - not_null
+
+  - name: vcur
+    columns:
+      - name: index
+        tests:
+          - unique
+          - not_null
