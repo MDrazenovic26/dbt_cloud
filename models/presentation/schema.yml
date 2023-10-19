@@ -11,6 +11,9 @@ sources:
       - name: CURRENCY_RATES
       - name: ORDERLINE
       - name: PAYMENT
+      - name: INVOICE
+      - name: CUSTOMER
+      - name: STORE
 
 models:
   - name: dim_payment

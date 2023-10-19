@@ -39,7 +39,7 @@ models:
 
   - name: tvkot
     columns:
-      - name: index
+      - name: PAYMENT_ID
         tests:
           - unique
           - not_null
