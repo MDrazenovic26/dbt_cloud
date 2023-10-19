@@ -22,9 +22,9 @@ with lips_nulls AS (
 ),
 lips_dates as (
     select
+        SHA2 (INDEX || POSNR, 256) as HASHID,
         INDEX,
         POSNR,
-        SHA2 (INDEX || POSNR, 256) as HASHID,
         VBELN,
         TO_VARCHAR(TO_DATE(VBDAT, 'MM-DD-YYYY'), 'yyyy-MM-dd') AS VBDAT,
         FBL1N,

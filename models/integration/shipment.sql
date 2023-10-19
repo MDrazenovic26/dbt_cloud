@@ -41,7 +41,7 @@ shipment_updates as (
         shipment_original
 
     {% if is_incremental() %}
-        where HASHID IN (SELECT HASHIDID FROM {{this}})
+        where HASHID IN (SELECT ID FROM {{this}})
     {% endif %}
 ),
 shipment_inserts as (
@@ -75,8 +75,8 @@ select
 	SENDD AS SHIP_DATE ,
 	OVXD AS SHIPPING_POINT_DATE ,
 	ARRID AS ARRIVAL_DATE,
-    INSERT_DATE,
-    LAST_MODIFIED
+    CURRENT_DATE() AS INSERT_DATE,
+    CURRENT_DATE() AS LAST_MODIFIED
 from shipment_union
 )
 select * from shipment_final

@@ -1,6 +1,8 @@
 {{
     config(
-        materialized= 'table'
+        materialized= 'incremental',
+        unique_key = 'HASHID',
+        incremental_strategy = 'merge'
     )
 }}
 
@@ -20,11 +22,13 @@ with vbrp_initial as (
         COALESCE(TIMESTAMP,'00:00:00') as TIMESTAMP,
         COALESCE(PERNR,'NA') as PERNR,
         COALESCE(BEZNR,'NA') as BEZNR,
-        COALESCE(RSNR,'NA') as RSNR
+        COALESCE(RSNR,'NA') as RSNR,
+        TO_VARCHAR(DATE_TRUNC('day', _airbyte_extracted_at), 'yyyy-MM-dd') as DATE_EXTRACTED
     from {{source ('snf_staging','VBRP')}}
 ),
 vbrp_final as (
     select
+        SHA2 (INDEX || POSNR, 256) as HASHID,
         INDEX,
         POSNR,
         VBELN,
@@ -39,7 +43,20 @@ vbrp_final as (
         TIMESTAMP,
         PERNR,
         BEZNR,
-        RSNR
+        RSNR,
+        DATE_EXTRACTED as INSERT_DATE,
+        CURRENT_DATE() as LAST_MODIFIED
     from vbrp_initial
+    {%if is_incremental()%}
+
+    where INSERT_DATE >  (select max(INSERT_DATE) from {{this}})
+
+    {%endif%}
 )
-SELECT * FROM vbrp_final
+
+{{ dbt_utils.deduplicate(
+    relation='vbrp_final',
+    partition_by='INDEX,POSNR',
+    order_by='ORDDT desc,TIMESTAMP desc',
+   )
+}}
