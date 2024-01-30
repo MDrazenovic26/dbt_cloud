@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: snf_kafka
+    database: SNEAKER_FAQTORY_DB_2
+    description: This is a source for staging shcema, untransformed data
+    schema: KAFKA_DEMO
+    tables:
+      - name: CLICKSTREAM
+
+models:
+  - name: CLICKSTREAM
+    #columns:
+    # - name: index
+    #  tests:
+    #   - unique
+    #  - not_null
